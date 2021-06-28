@@ -1,0 +1,15 @@
+.startPage {
+  display: block;
+  margin: 0;
+  text-align: center;
+  font-size: large;
+}
+
+.button {
+  background-color: darkblue;
+  color: aliceblue;
+}
+
+.button:hover {
+  background-color: blue;
+}
