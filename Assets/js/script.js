@@ -1,8 +1,7 @@
 // Title page with button to start quiz
 
 //var startPage = (document.getElementById("startPage").style.display = "block");
-var startTime = 5;
-var timerPenalty = 1;
+
 var questions = [
   "JavaScript is difficult to learn.",
   "blah blah blah",
@@ -12,12 +11,17 @@ var questions = [
 ];
 var answers = ["true", "false"];
 // TODO: fill in answer key
-var wrongAnswer = ["1", "2", "3", "4", "5"];
-var correctAnswer = ["1", "2", "3", "4", "5"];
+var wrongAnswer = ["False", "2", "3", "4", "5"];
+var correctAnswer = ["True", "2", "3", "4", "5"];
 
+//timer variables
+var timeEl = document.querySelector(".time");
 var timerInterval = null;
+var minutesLeft = 5;
+var timerPenalty = 1;
 
 // Onclick of start button everything resets to display the first question and start the timer
+var startButton = document.querySelector("#startButton");
 
 startButton.addEventListener("click", function () {
   initializeQuiz();
@@ -29,17 +33,17 @@ function initializeQuiz() {
   // Transition to initial page
   currentQuestion = 0;
   correctAnswerCount = 0;
-  timerLeft = startTime;
+  timerLeft = minutesLeft;
   if (timerInterval) {
     clearInterval(timerInterval);
     timerInterval = null;
   }
   //somehow display the page content by style display TODO: error code style of null
 
-  // document.getElementById("startPage").style.display = "block";
-  // document.getElementById("startQuiz").style.display = "none";
-  // document.getElementById("results").style.display = "none";
-  // document.getElementById("highScore").style.display = "none";
+  document.getElementById("startPage").style.display = "none";
+  document.getElementById("startQuiz").style.display = "block";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("highScore").style.display = "none";
 }
 
 // User answers the question which displays correct or wrong
