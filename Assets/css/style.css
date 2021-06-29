@@ -13,3 +13,7 @@
 .button:hover {
   background-color: blue;
 }
+
+.showButton {
+  display: none;
+}

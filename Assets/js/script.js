@@ -4,8 +4,8 @@
 
 var questions = [
   "JavaScript is difficult to learn.",
-  "blah blah blah",
-  "blah bleh bleh",
+  "Many web developers teach themselves how to code.",
+  "Coding bootcamps are highly criticized.",
   "more questions",
   "la la la la",
 ];
@@ -24,7 +24,7 @@ var timerPenalty = 1;
 var startButton = document.querySelector("#startButton");
 
 startButton.addEventListener("click", function () {
-  initializeQuiz();
+  startQuiz();
 });
 
 //write inititalizeQuiz function
@@ -43,17 +43,49 @@ function startQuiz() {
   document.getElementById("highScore").style.display = "none";
 }
 
+//TODO: display current question function
+
+function displayCurrentQuestion() {
+  var getQuestion = questions[Math.floor(Math.random() * questions.length)];
+  currentQuestion = [];
+  console.log(getQuestion);
+  for (var i = 0; i < getQuestion; i++) {
+    currentQuestion.push(getQuestion);
+  }
+  console.log(currentQuestion);
+
+  var questionTitle = document.getElementById("#questionTitle");
+  if (questionTitle) {
+    document.innerHtml(currentQuestion);
+  }
+
+  document.getElementById("answerButton1").innerHTML(answers[0]);
+  document.getElementById("answerButton2").innerHTML(answers[1]);
+}
+
 //TODO: display and start timer function
-function displayCurrentTimeLeft() {}
-function decrementTime() {}
+function displayCurrentTimeLeft() {
+  timeEl.textContent(minutesLeft + " minutes remaining.");
+}
+
+function decrementTime() {
+  if (timerLeft >= 0) {
+    timerLeft--;
+    displayCurrentTimeLeft();
+  } else {
+    clearInterval(timerInterval);
+    displayResults();
+  }
+}
+//TODO: create function displayResults
 
 // User answers the question which displays correct or wrong
 
 function answerQuestion(answer_num) {
-  var currentAnswers = answers[currentQuestion];
+  var currentAnswer = answers[currentQuestion];
   var currentCorrectAnswer = correctAnswer[currentQuestion];
 
-  if (currentAnswers[answer_num] === currentCorrectAnswer) {
+  if (currentAnswer[answer_num] === currentCorrectAnswer) {
     correctAnswerCount++;
     var correct_answer = document.getElementById("correctAnswer");
     if (correct_answer) {
@@ -80,4 +112,4 @@ function answerQuestion(answer_num) {
 // If correct the score is logged and the next question is displayed
 // The quiz ends when either all the questions have been answered or the timer runs out
 // End page displays score with a field to enter initials
-// High schore page is displayed with list of high scores and a go back button and a clear scores button
+// High score page is displayed with list of high scores and a go back button and a clear scores button
