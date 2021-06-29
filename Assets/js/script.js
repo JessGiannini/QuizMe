@@ -29,15 +29,12 @@ startButton.addEventListener("click", function () {
 
 //write inititalizeQuiz function
 
-function initializeQuiz() {
+function startQuiz() {
   // Transition to initial page
-  currentQuestion = 0;
-  correctAnswerCount = 0;
-  timerLeft = minutesLeft;
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
+  displayCurrentQuestion();
+  displayCurrentTimeLeft();
+  timerInterval = setInterval(decrementTime, 1000);
+
   //somehow display the page content by style display TODO: error code style of null
 
   document.getElementById("startPage").style.display = "none";
@@ -45,6 +42,10 @@ function initializeQuiz() {
   document.getElementById("results").style.display = "none";
   document.getElementById("highScore").style.display = "none";
 }
+
+//TODO: display and start timer function
+function displayCurrentTimeLeft() {}
+function decrementTime() {}
 
 // User answers the question which displays correct or wrong
 
