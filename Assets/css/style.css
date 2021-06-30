@@ -37,8 +37,10 @@
 
 .results {
   display: none;
+  text-align: center;
 }
 
 .highScore {
   display: none;
+  text-align: center;
 }

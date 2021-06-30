@@ -35,7 +35,8 @@ startButton.addEventListener("click", function () {
 });
 
 // Your Score variable
-var scoreEl = document.querySelector("yourScore");
+var yourScoreEl = document.querySelector(".yourScore");
+console.log("Score variable: " + yourScoreEl);
 
 //add event listener to answer buttons to log answer and display message
 
@@ -156,7 +157,8 @@ function displayResults() {
   document.getElementById("startQuiz").style.display = "none";
   document.getElementById("results").style.display = "block";
   document.getElementById("highScore").style.display = "none";
-  document.getElementById("yourScore").style.display = "block";
+  yourScoreEl.textContent = "You got " + correctAnswerCount + "  /5";
+  console.log("Score display: " + yourScoreEl);
 }
 
 // High score page is displayed with list of high scores and a go back button and a clear scores button
