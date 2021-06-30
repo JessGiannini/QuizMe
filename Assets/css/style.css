@@ -15,12 +15,30 @@
 }
 
 .showButton {
-  display: none;
+  display: block;
+  text-align: center;
 }
 
-#startQuiz {
-  display: block;
+.startQuiz {
+  display: none;
   margin: 0;
   text-align: center;
   font-size: large;
+}
+
+#correctAnswer {
+  display: none;
+  color: green;
+}
+#wrongAnswer {
+  display: none;
+  color: red;
+}
+
+.results {
+  display: none;
+}
+
+.highScore {
+  display: none;
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./Assets/css/style.css">
 </head>
 <body>
- <header class = "startPage">
+ <header class = "startPage" id ="startPage">
      <h1>
          Begin JavaScript Quiz Now
      </h1>
@@ -17,18 +17,22 @@
      </p>
      <button id = "startButton" class = "button">Start Now</button>
     </header>
- <div class = "startQuiz">
+ <div class = "startQuiz" id="startQuiz">
      <h1 class = "time" style = "text-align: right;"></h1>
-     <p id="questions" id="questionTitle"></p>
+     <p class = "questions" id="questionTitle"></p>
      <section class = "showButton">
          <button class = "button" id="answerButton1"></button>
          <button class = "button" id="answerButton2"></button>
      </section>
-     <p id="correctAnswer"></p>
-     <p id="wrongAnswer"></p>
+     <p id="correctAnswer"> Correct! </p>
+     <p id="wrongAnswer"> Wrong! </p>
  </div>
- <div class = "results"></div>
- <div class = "highScore"></div>
+ <div class = "results" id="results"> 
+     <h1> Results Page! </h1>
+ </div>
+ <div class = "highScore" id="highScore">
+    <h1> High Score Page! </h1>
+ </div>
 
     <script src="assets/js/script.js"></script>
 </body>
