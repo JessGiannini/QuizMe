@@ -52,6 +52,14 @@ answerButton2.addEventListener("click", function () {
   answerQuestion(1);
 });
 
+//add event listener to enter high score
+
+var enterHighScore = document.querySelector("#enterHighScore");
+
+enterHighScore.addEventListener("click", function () {
+  highScore();
+});
+
 //write startQuiz function
 
 function startQuiz() {
@@ -162,3 +170,9 @@ function displayResults() {
 }
 
 // High score page is displayed with list of high scores and a go back button and a clear scores button
+function highScore() {
+  document.getElementById("startPage").style.display = "none";
+  document.getElementById("startQuiz").style.display = "none";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("highScore").style.display = "block";
+}
