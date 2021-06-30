@@ -14,7 +14,7 @@ The code for this particular project was challenging. This section in particular
 
 ## Deployed Link
 
-- [See Live Site](https://jessgiannini.github.io/ProtectYourBusiness/)
+- [See Live Site](https://github.com/JessGiannini/QuizMe)
 
 ## Authors
 
