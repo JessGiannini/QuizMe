@@ -34,6 +34,9 @@ startButton.addEventListener("click", function () {
   startQuiz();
 });
 
+// Your Score variable
+var scoreEl = document.querySelector("yourScore");
+
 //add event listener to answer buttons to log answer and display message
 
 var answerButton1 = document.querySelector("#answerButton1");
@@ -110,13 +113,6 @@ function decrementTime() {
     displayResults();
   }
 }
-//TODO: create function displayResults
-function displayResults() {
-  document.getElementById("startPage").style.display = "none";
-  document.getElementById("startQuiz").style.display = "none";
-  document.getElementById("results").style.display = "block";
-  document.getElementById("highScore").style.display = "none";
-}
 
 // User answers the question which displays correct or wrong
 
@@ -149,12 +145,18 @@ function answerQuestion(answer_num) {
   if (minutesLeft > 0) {
     setTimeout(displayCurrentQuestion, 2000);
   } else {
+    // The quiz ends when either all the questions have been answered or the timer runs out
     minutesLeft = 0;
   }
 }
-
-// The quiz ends when either all the questions have been answered or the timer runs out
-
 // End page displays score with a field to enter initials
+//TODO: create function displayResults
+function displayResults() {
+  document.getElementById("startPage").style.display = "none";
+  document.getElementById("startQuiz").style.display = "none";
+  document.getElementById("results").style.display = "block";
+  document.getElementById("highScore").style.display = "none";
+  document.getElementById("yourScore").style.display = "block";
+}
 
 // High score page is displayed with list of high scores and a go back button and a clear scores button
