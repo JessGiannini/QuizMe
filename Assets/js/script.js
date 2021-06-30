@@ -3,22 +3,29 @@
 //var startPage = (document.getElementById("startPage").style.display = "block");
 
 var questions = [
-  "JavaScript is difficult to learn.",
-  "Many web developers teach themselves how to code.",
-  "Coding bootcamps are highly criticized.",
-  "more questions",
-  "la la la la",
+  "1. JavaScript is difficult to learn.",
+  "2. Many web developers teach themselves how to code.",
+  "3. Coding bootcamps are highly criticized.",
+  "4. more questions",
+  "5. la la la la",
 ];
 var answers = ["true", "false"];
+
 // TODO: fill in answer key
-var wrongAnswer = ["False", "2", "3", "4", "5"];
-var correctAnswer = ["True", "2", "3", "4", "5"];
+var wrongAnswer = ["1. False", "2", "3", "4", "5"];
+var correctAnswer = ["1. True", "2", "3", "4", "5"];
+
+//correct answer counter
+var correctAnswerCount = 0;
+var highScore = [];
 
 //timer variables
 var timeEl = document.querySelector(".time");
 var timerInterval = null;
 var minutesLeft = 5;
 var timerPenalty = 1;
+// var displayCurrentTimeLeft =
+//   timeEl.textContent[minutesLeft + " minutes remaining."];
 
 // Onclick of start button everything resets to display the first question and start the timer
 var startButton = document.querySelector("#startButton");
@@ -27,20 +34,20 @@ startButton.addEventListener("click", function () {
   startQuiz();
 });
 
-//write inititalizeQuiz function
+//write startQuiz function
 
 function startQuiz() {
+  document.getElementByClassName(".startPage").style.display = "none";
+  document.getElementByClassName(".startQuiz").style.display = "block";
+  document.getElementByClassName(".results").style.display = "none";
+  document.getElementByClassName(".highScore").style.display = "none";
   // Transition to initial page
   displayCurrentQuestion();
-  displayCurrentTimeLeft();
+  //displayCurrentTimeLeft();
   timerInterval = setInterval(decrementTime, 1000);
 
   //somehow display the page content by style display TODO: error code style of null
-
-  document.getElementById("startPage").style.display = "none";
-  document.getElementById("startQuiz").style.display = "block";
-  document.getElementById("results").style.display = "none";
-  document.getElementById("highScore").style.display = "none";
+  displayNext();
 }
 
 //TODO: display current question function
@@ -52,15 +59,15 @@ function displayCurrentQuestion() {
   for (var i = 0; i < getQuestion; i++) {
     currentQuestion.push(getQuestion);
   }
-  console.log(currentQuestion);
+  console.log("Question prints here");
 
   var questionTitle = document.getElementById("#questionTitle");
   if (questionTitle) {
     document.innerHtml(currentQuestion);
-  }
 
-  document.getElementById("answerButton1").innerHTML(answers[0]);
-  document.getElementById("answerButton2").innerHTML(answers[1]);
+    document.getElementById("answerButton1").innerHTML(answers[0]);
+    document.getElementById("answerButton2").innerHTML(answers[1]);
+  }
 }
 
 //TODO: display and start timer function
@@ -69,8 +76,8 @@ function displayCurrentTimeLeft() {
 }
 
 function decrementTime() {
-  if (timerLeft >= 0) {
-    timerLeft--;
+  if (minutesLeft >= 0) {
+    minutesLeft--;
     displayCurrentTimeLeft();
   } else {
     clearInterval(timerInterval);
@@ -78,6 +85,12 @@ function decrementTime() {
   }
 }
 //TODO: create function displayResults
+function displayResults() {
+  document.getElementByClassName(".startPage").style.display = "none";
+  document.getElementByClassName(".startQuiz").style.display = "none";
+  document.getElementByClassName(".results").style.display = "block";
+  document.getElementByClassName(".highScore").style.display = "none";
+}
 
 // User answers the question which displays correct or wrong
 
@@ -98,18 +111,19 @@ function answerQuestion(answer_num) {
       wrong_answer.style.display = "block";
     }
 
-    timerLeft = timerLeft - timerPenalty;
+    minutesLeft = minutesLeft - timerPenalty;
   }
-
-  if (timerLeft > 0 && currentQuestion < questions.length - 1) {
+  // If correct the score is logged and the next question is displayed
+  if (minutesLeft > 0 && currentQuestion < questions.length - 1) {
     currentQuestion++;
-    setTimeout(displayCurrentQuestion, 60000);
+    setTimeout(displayCurrentQuestion, 1000);
   } else {
-    timerLeft = 0;
+    minutesLeft = 0;
   }
 }
 
-// If correct the score is logged and the next question is displayed
 // The quiz ends when either all the questions have been answered or the timer runs out
+
 // End page displays score with a field to enter initials
+
 // High score page is displayed with list of high scores and a go back button and a clear scores button

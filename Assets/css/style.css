@@ -17,3 +17,10 @@
 .showButton {
   display: none;
 }
+
+#startQuiz {
+  display: block;
+  margin: 0;
+  text-align: center;
+  font-size: large;
+}
