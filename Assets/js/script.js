@@ -3,17 +3,17 @@
 //var startPage = (document.getElementById("startPage").style.display = "block");
 
 var questions = [
-  "1. JavaScript is difficult to learn.",
-  "2. Many web developers teach themselves how to code.",
-  "3. Coding bootcamps are highly criticized.",
-  "4. more questions",
-  "5. la la la la",
+  "JavaScript is difficult to learn.",
+  "Many web developers teach themselves how to code.",
+  "Coding bootcamps are highly criticized.",
+  "You can learn to code by copying other people's code.",
+  "Web developers are highly sought after in a growing field.",
 ];
 var answers = ["True", "False"];
 var currentQuestion = 0;
 // TODO: fill in answer key
 
-var correctAnswer = ["True", "True", "False", "False", "True"];
+var correctAnswer = ["True", "True", "True", "False", "True"];
 var visitedQuestions = [];
 //correct answer counter
 var correctAnswerCount = 0;
