@@ -176,3 +176,8 @@ function highScore() {
   document.getElementById("results").style.display = "none";
   document.getElementById("highScore").style.display = "block";
 }
+
+function clearHighScore() {
+  highScoreList = [];
+  displayHighScoreTable();
+}
