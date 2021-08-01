@@ -1,7 +1,5 @@
 // Title page with button to start quiz
 
-//var startPage = (document.getElementById("startPage").style.display = "block");
-
 var questions = [
   "JavaScript is difficult to learn.",
   "Many web developers teach themselves how to code.",
@@ -11,13 +9,12 @@ var questions = [
 ];
 var answers = ["True", "False"];
 var currentQuestion = 0;
-// TODO: fill in answer key
 
 var correctAnswer = ["True", "True", "True", "False", "True"];
 var visitedQuestions = [];
 //correct answer counter
 var correctAnswerCount = 0;
-var highScore = [];
+var highScore = JSON.parse(window.localStorage.getItem("highScore")) || [];
 
 //timer variables
 var timeEl = document.querySelector(".time");
@@ -27,6 +24,7 @@ var timerPenalty = 60;
 // var displayCurrentTimeLeft =
 //   timeEl.textContent[minutesLeft + " minutes remaining."];
 
+//START BUTTON
 // Onclick of start button everything resets to display the first question and start the timer
 var startButton = document.querySelector("#startButton");
 
@@ -57,7 +55,12 @@ answerButton2.addEventListener("click", function () {
 var enterHighScore = document.querySelector("#enterHighScore");
 
 enterHighScore.addEventListener("click", function () {
-  highScore();
+  var enterUserName = document.querySelector(".yourName").value;
+  var highScoreObj = { name: enterUserName, score: correctAnswerCount };
+  highScore.push(highScoreObj);
+  //maybe add sorting to this part of the function; use google search for this
+  //update localStorage.setItem with a stringified version of highScore array
+  displayHighScoreTable();
 });
 
 //write startQuiz function
@@ -165,19 +168,53 @@ function displayResults() {
   document.getElementById("startQuiz").style.display = "none";
   document.getElementById("results").style.display = "block";
   document.getElementById("highScore").style.display = "none";
+  // put input field here and finish to hide in css on load, then show button display results triggered
   yourScoreEl.textContent = "You got " + correctAnswerCount + "  /5";
   console.log("Score display: " + yourScoreEl);
 }
 
 // High score page is displayed with list of high scores and a go back button and a clear scores button
-function highScore() {
+function displayHighScoreTable() {
   document.getElementById("startPage").style.display = "none";
   document.getElementById("startQuiz").style.display = "none";
   document.getElementById("results").style.display = "none";
   document.getElementById("highScore").style.display = "block";
+
+  //get the stored scores or leave as empty array if no scores
+  var highScoreFinal =
+    JSON.parse(window.localStorage.getItem("#high_score_table")) || [];
+
+  //sort highScores
+  highScoreFinal.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  //loop through high score array to build and append one table row for each high score object in array #highScoreTable
+  // for (var i = 0; i < highScoreObj.length; i++) {
+  //   console.log(highScoreObj[i]);
+  // }
+
+  highScoreFinal.forEach(function (score) {
+    var liTag = document.createElement("li");
+    liTag.textContent = score.initials + " = " + score.score;
+    var highScoreList = document.getElementById("#high_score_table");
+    highScoreList.appendChild(liTag);
+  });
 }
 
 function clearHighScore() {
-  highScoreList = [];
+  highScoreObj = [];
   displayHighScoreTable();
 }
+
+function goBack() {
+  document.getElementById("startPage").style.display = "block";
+  document.getElementById("startQuiz").style.display = "none";
+  document.getElementById("results").style.display = "none";
+  document.getElementById("highScore").style.display = "none";
+}
+var goBackButton = document.querySelector("#goBack");
+
+goBackButton.addEventListener("click", function () {
+  goBack();
+});

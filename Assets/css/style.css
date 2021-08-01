@@ -44,3 +44,7 @@
   display: none;
   text-align: center;
 }
+
+.yourName {
+  /* hide this section to display later in javascript */
+}
